@@ -11,6 +11,7 @@ export default function MainComponent() {
     const { searchQuery } = useContext(GlobalContext)
 
 
+
     useEffect(() => {
 
         const fetchMovies = async () => {
@@ -65,6 +66,28 @@ export default function MainComponent() {
         }
     }, [searchQuery, series])
 
+    // const [flagUrl, setFlagUrl] = useState(null)
+    // const fetchFlag = async (languageCode) => {
+    //     try {
+    //         const response = await fetch(`https://flagsapi.com/${languageCode}/flat/64.png`);
+    //         if (response.ok) {
+    //             setFlagUrl(response.url);
+    //         } else {
+    //             setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
+    //         }
+    //     } catch (error) {
+    //         setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     if (language) {
+    //         fetchFlag(language);
+    //     }
+    // }, [language]);
+
+
+
     return (
         <>
             <div className="container my-4 ">
@@ -78,7 +101,9 @@ export default function MainComponent() {
                                     title={movie.title}
                                     description={movie.overview}
                                     language={movie.original_language}
+                                    // flagUrl={flagUrl}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${movie.poster_path}`}
+                                    vote={movie.vote_average}
                                 />
                             </div>
                         ))
@@ -99,7 +124,9 @@ export default function MainComponent() {
                                     title={serie.name}
                                     description={serie.overview}
                                     language={serie.original_language}
+                                    // flagUrl={flagUrl}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${serie.poster_path}`}
+                                    vote={serie.vote_average}
                                 />
                             </div>
                         ))
