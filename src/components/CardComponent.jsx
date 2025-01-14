@@ -3,25 +3,30 @@ import './CardComponent.css';
 import { FaStar } from 'react-icons/fa';
 
 export default function CardComponent({ imageUrl, title, description, language, vote }) {
-    const [flagUrl, setFlagUrl] = useState(null)
-    const fetchFlag = async (languageCode) => {
-        try {
-            const response = await fetch(`https://flagsapi.com/${languageCode}/flat/64.png`);
-            if (response.ok) {
-                setFlagUrl(response.url);
-            } else {
-                setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
-            }
-        } catch (error) {
-            setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
-        }
-    };
 
+
+
+
+    const [flagUrl, setFlagUrl] = useState(null)
+    const getFlagUrl = (languageCode) => {
+        if (languageCode === "en") return "https://www.bandiere-mondo.it/data/flags/normal/gb.png";
+        if (languageCode === "it") return "https://www.bandiere-mondo.it/data/flags/normal/it.png";
+        if (languageCode === "fr") return "https://www.bandiere-mondo.it/data/flags/normal/fr.png";
+        if (languageCode === "es") return "https://www.bandiere-mondo.it/data/flags/normal/es.png";
+        if (languageCode === "de") return "https://www.bandiere-mondo.it/data/flags/normal/de.png";
+        if (languageCode === "ja") return "https://www.bandiere-mondo.it/data/flags/normal/jp.png";
+        if (languageCode === "zh") return "https://www.bandiere-mondo.it/data/flags/normal/cn.png";
+        if (languageCode === "ko") return "https://www.bandiere-mondo.it/data/flags/normal/kr.png";
+        if (languageCode === "ru") return "https://www.bandiere-mondo.it/data/flags/normal/ru.png";
+
+        return "https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg";
+    };
     useEffect(() => {
         if (language) {
-            fetchFlag(language);
+            const url = getFlagUrl(language)
+            setFlagUrl(url);
         }
-    }, [language]);
+    }, [language])
 
     const getStars = (vote) => {
 
@@ -47,7 +52,7 @@ export default function CardComponent({ imageUrl, title, description, language, 
                     <span className="text-muted">Language:{language} </span>
                     {flagUrl && <img src={flagUrl} alt="flag" style={{ width: "30px", marginLeft: "10px" }} />}
                 </p>
-                <p>{getStars(vote)}</p>
+                <div>{getStars(vote)}</div>
             </div>
         </div>
 
