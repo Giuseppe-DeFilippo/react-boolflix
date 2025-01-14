@@ -76,6 +76,8 @@ export default function MainComponent() {
                                 <CardComponent
                                     key={movie.id}
                                     title={movie.title}
+                                    description={movie.overview}
+                                    language={movie.original_language}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${movie.poster_path}`}
                                 />
                             </div>
@@ -95,6 +97,8 @@ export default function MainComponent() {
                                 <CardComponent
                                     key={serie.id}
                                     title={serie.name}
+                                    description={serie.overview}
+                                    language={serie.original_language}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${serie.poster_path}`}
                                 />
                             </div>

@@ -1,0 +1,32 @@
+.card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out
+}
+
+.card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: none;
+}
+
+.card:hover .card-img {
+    filter: opacity(0.3);
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
