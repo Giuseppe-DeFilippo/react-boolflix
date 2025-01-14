@@ -14,7 +14,7 @@ export default function SearchBarComponent() {
 
     return (
         <>
-            <div className="">
+            <div className="d-flex align-items-center">
                 <input
                     className="form-control me-2"
                     type="search"
