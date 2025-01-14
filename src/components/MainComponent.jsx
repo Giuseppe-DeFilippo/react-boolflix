@@ -21,7 +21,7 @@ export default function MainComponent() {
             <h3 className="text-white mb-4">movies</h3>
             <div className=" row justify-content-center">
                 {movies.map((movie) => (
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4" >
                         <CardComponent
                             key={movie.id}
                             title={movie.title}

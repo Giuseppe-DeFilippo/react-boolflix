@@ -1,21 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import HeaderComponent from "./components/HeaderComponent"
 import MainComponent from './components/MainComponent'
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
+import GlobalContext from './contexts/GlobalContext'
+import { BrowserRouter, Routes, Route, } from 'react-router-dom'
+import DefaultLayoutComponent from './components/DefaultLayoutComponent'
 function App() {
-
-
   return (
-
-    <>
-      <HeaderComponent />
-      <MainComponent />
-    </>
-
-  )
+    <GlobalContext.Provider value={{}}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayoutComponent />}>
+            <Route path="/" element={<MainComponent />} />
+            {/* <Route path="serieTv" element={ } /> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
+  );
 }
 
 export default App
