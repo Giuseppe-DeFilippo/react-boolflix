@@ -9,15 +9,23 @@ export default function CardComponent({ imageUrl, title, description, language, 
 
     const [flagUrl, setFlagUrl] = useState(null)
     const getFlagUrl = (languageCode) => {
-        if (languageCode === "en") return "https://www.bandiere-mondo.it/data/flags/normal/gb.png";
-        if (languageCode === "it") return "https://www.bandiere-mondo.it/data/flags/normal/it.png";
-        if (languageCode === "fr") return "https://www.bandiere-mondo.it/data/flags/normal/fr.png";
-        if (languageCode === "es") return "https://www.bandiere-mondo.it/data/flags/normal/es.png";
-        if (languageCode === "de") return "https://www.bandiere-mondo.it/data/flags/normal/de.png";
-        if (languageCode === "ja") return "https://www.bandiere-mondo.it/data/flags/normal/jp.png";
-        if (languageCode === "zh") return "https://www.bandiere-mondo.it/data/flags/normal/cn.png";
-        if (languageCode === "ko") return "https://www.bandiere-mondo.it/data/flags/normal/kr.png";
-        if (languageCode === "ru") return "https://www.bandiere-mondo.it/data/flags/normal/ru.png";
+        if (languageCode === "en") return "https://www.bandiere-mondo.it/data/flags/normal/gb.png"; // Inglese
+        if (languageCode === "it") return "https://www.bandiere-mondo.it/data/flags/normal/it.png"; // Italiano
+        if (languageCode === "fr") return "https://www.bandiere-mondo.it/data/flags/normal/fr.png"; // Francese
+        if (languageCode === "es") return "https://www.bandiere-mondo.it/data/flags/normal/es.png"; // Spagnolo
+        if (languageCode === "de") return "https://www.bandiere-mondo.it/data/flags/normal/de.png"; // Tedesco
+        if (languageCode === "ja") return "https://www.bandiere-mondo.it/data/flags/normal/jp.png"; // Giapponese
+        if (languageCode === "zh") return "https://www.bandiere-mondo.it/data/flags/normal/cn.png"; // Cinese
+        if (languageCode === "ko") return "https://www.bandiere-mondo.it/data/flags/normal/kr.png"; // Coreano
+        if (languageCode === "ru") return "https://www.bandiere-mondo.it/data/flags/normal/ru.png"; // Russo
+        if (languageCode === "lv") return "https://www.bandiere-mondo.it/data/flags/normal/lv.png"; // Lettonia
+        if (languageCode === "no") return "https://www.bandiere-mondo.it/data/flags/normal/no.png"; // Norvegia
+        if (languageCode === "af") return "https://www.bandiere-mondo.it/data/flags/normal/za.png"; // Sudafrica
+        if (languageCode === "ar") return "https://www.bandiere-mondo.it/data/flags/normal/ae.png"; // Arabo (esempio: Emirati Arabi Uniti)
+        if (languageCode === "pt") return "https://www.bandiere-mondo.it/data/flags/normal/pt.png"; // Portoghese
+        if (languageCode === "hi") return "https://www.bandiere-mondo.it/data/flags/normal/in.png"; // Hindi (India)
+        if (languageCode === "cs") return "https://www.bandiere-mondo.it/data/flags/normal/cz.png"; // Ceco
+        if (languageCode === "tl") return "https://www.bandiere-mondo.it/data/flags/normal/ph.png"; // Tagalog (Filippine)
 
         return "https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg";
     };
