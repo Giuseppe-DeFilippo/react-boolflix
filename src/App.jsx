@@ -4,9 +4,10 @@ import MainComponent from './components/MainComponent'
 import GlobalContext from './contexts/GlobalContext'
 import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import DefaultLayoutComponent from './components/DefaultLayoutComponent'
+import { GlobalProvider } from './contexts/GlobalContext'
 function App() {
   return (
-    <GlobalContext.Provider value={{}}>
+    <GlobalProvider value={{}}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayoutComponent />}>
@@ -15,7 +16,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </GlobalContext.Provider>
+    </GlobalProvider>
   );
 }
 
