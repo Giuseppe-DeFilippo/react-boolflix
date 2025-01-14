@@ -6,7 +6,7 @@ function DefaultLayoutComponent() {
     return (
         <>
             <HeaderComponent />
-            <main>
+            <main className='bg-secondary py-4'>
                 <Outlet />
             </main>
         </>
