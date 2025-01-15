@@ -10,21 +10,39 @@ export default function MainComponent() {
     const [filteredSeries, setFilteredSeries] = useState([])
     const { searchQuery } = useContext(GlobalContext)
 
+    const fetchMovieCredits = async (movieId) => {
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/movie/${movieId}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+            );
+            const data = await response.json();
+            return data.cast.slice(0, 5).map((actor) => actor.name); // Top 5 actors
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    };
 
+    const fetchMovies = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/movie/popular?api_key=${import.meta.env.VITE_API_KEY}`);
+            const data = await response.json();
+            for (const movie of data.results) {
+                const actors = await fetchMovieCredits(movie.id);
+                moviesWithActors.push({ ...movie, attori: actors })
+            }
+
+
+            setMovies(moviesWithActors);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-
-        const fetchMovies = async () => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/movie/popular?api_key=${import.meta.env.VITE_API_KEY}`);
-                const data = await response.json();
-                setMovies(data.results);
-            } catch (error) {
-                console.error(error);
-            }
-        };
         fetchMovies();
     }, []);
+
 
     useEffect(() => {
         const fetchSeries = async () => {
@@ -66,25 +84,7 @@ export default function MainComponent() {
         }
     }, [searchQuery, series])
 
-    // const [flagUrl, setFlagUrl] = useState(null)
-    // const fetchFlag = async (languageCode) => {
-    //     try {
-    //         const response = await fetch(`https://flagsapi.com/${languageCode}/flat/64.png`);
-    //         if (response.ok) {
-    //             setFlagUrl(response.url);
-    //         } else {
-    //             setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
-    //         }
-    //     } catch (error) {
-    //         setFlagUrl('https://upload.wikimedia.org/wikipedia/commons/5/56/No_flag.svg');
-    //     }
-    // };
 
-    // useEffect(() => {
-    //     if (language) {
-    //         fetchFlag(language);
-    //     }
-    // }, [language]);
 
 
 
@@ -101,7 +101,7 @@ export default function MainComponent() {
                                     title={movie.title}
                                     description={movie.overview}
                                     language={movie.original_language}
-                                    // flagUrl={flagUrl}
+                                    attori={movie.attori}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${movie.poster_path}`}
                                     vote={movie.vote_average}
                                 />
@@ -124,7 +124,7 @@ export default function MainComponent() {
                                     title={serie.name}
                                     description={serie.overview}
                                     language={serie.original_language}
-                                    // flagUrl={flagUrl}
+                                    attori={serie.attori}
                                     imageUrl={`${import.meta.env.VITE_API_BASE_URL}${serie.poster_path}`}
                                     vote={serie.vote_average}
                                 />

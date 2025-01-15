@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import './CardComponent.css';
 import { FaStar } from 'react-icons/fa';
 
-export default function CardComponent({ imageUrl, title, description, language, vote }) {
+export default function CardComponent({ imageUrl, title, description, language, vote, attori }) {
 
 
 
@@ -50,8 +50,10 @@ export default function CardComponent({ imageUrl, title, description, language, 
         return starsArray
     };
 
+
+
     return (
-        <div className="card" style={{}}>
+        <div className="card " style={{}}>
             <img src={imageUrl} className="card-img" alt={title} />
             <div className="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center ">
                 <h5 className="card-title">{title}</h5>
@@ -60,9 +62,21 @@ export default function CardComponent({ imageUrl, title, description, language, 
                     <span className="text-muted">Language:{language} </span>
                     {flagUrl && <img src={flagUrl} alt="flag" style={{ width: "30px", marginLeft: "10px" }} />}
                 </p>
-                <div>{getStars(vote)}</div>
+                {/* <p className="card-text"> */}
+                {/* <span className="text-muted">Actors:</span> */}
+                {/* {attori && attori.length > 0 ? (
+                        <ul style={{ listStyleType: "none", padding: 0 }}>
+                            {attori.slice(0, 2).map((actor, index) => (
+                                <li key={index}>{actor}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        "non ci sono attori richiesti"
+                    )} */}
+                {/* </p> */}
+                <div className="card-text">{getStars(vote)}</div>
             </div>
-        </div>
+        </div >
 
     );
 } 
